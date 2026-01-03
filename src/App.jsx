@@ -65,6 +65,51 @@ const App = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const sectionVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const [activeSection, setActiveSection] = useState("home");
+  const sections = [
+    "inicio",
+    "sobre",
+    "tecnologias",
+    "experiencias",
+    "projetos",
+    "contato",
+  ];
+  useEffect(() => {
+    const handleScrollSpy = () => {
+      const scrollPosition = window.innerHeight / 2;
+
+      for (const id of sections) {
+        const section = document.getElementById(id);
+        if (!section) continue;
+
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= scrollPosition && rect.bottom >= scrollPosition) {
+          setActiveSection(id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollSpy);
+    return () => window.removeEventListener("scroll", handleScrollSpy);
+  }, []);
+
   return (
     <div className="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen">
       {/* Navigation */}
@@ -104,11 +149,17 @@ const App = () => {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className="hidden md:block text-sm font-medium tracking-wider relative"
-                whileHover="hover"
                 initial="rest"
-                animate="rest"
+                animate={activeSection === item.id ? "active" : "rest"}
+                whileHover="hover"
               >
-                <span className="text-white/80 hover:text-purple-400 transition-colors">
+                <span
+                  className={`transition-colors ${
+                    activeSection === item.id
+                      ? "text-purple-400"
+                      : "text-white/80 hover:text-purple-400"
+                  }`}
+                >
                   {item.label}
                 </span>
 
@@ -116,6 +167,7 @@ const App = () => {
                   variants={{
                     rest: { width: 0 },
                     hover: { width: "100%" },
+                    active: { width: "100%" },
                   }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
                   className="absolute -bottom-1 left-0 h-0.5 bg-purple-500"
@@ -244,9 +296,13 @@ const App = () => {
       </section>
 
       {/* About Section */}
-      <section
+      <motion.section
         id="sobre"
-        className="min-h-screen flex items-center justify-center px-6 py-20"
+        className="py-24"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
       >
         <div className="max-w-5xl">
           <h2 className="text-5xl font-bold mb-4 text-center">
@@ -285,12 +341,16 @@ const App = () => {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Technologies Section */}
-      <section
+      <motion.section
         id="tecnologias"
         className="min-h-screen flex items-center justify-center px-6 py-20"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
       >
         <div className="max-w-7xl w-full">
           <h2 className="text-5xl font-bold mb-4 text-center">
@@ -463,12 +523,16 @@ const App = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Experience Section */}
-      <section
+      <motion.section
         id="experiencias"
         className="min-h-screen flex items-center justify-center px-6 py-20"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
       >
         <div className="max-w-5xl w-full">
           <h2 className="text-5xl font-bold mb-4 text-center">
@@ -499,7 +563,7 @@ const App = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Projects Section */}
       <section
