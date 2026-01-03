@@ -23,7 +23,6 @@ const App = () => {
   const fullName = "Victor Berlinck";
   const [menuOpen, setMenuOpen] = useState(false);
 
-
   useEffect(() => {
     let index = 0;
     const typingInterval = setInterval(() => {
@@ -123,72 +122,103 @@ const App = () => {
           backdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
         }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 w-full z-50 ${
+        className={`fixed top-0 w-full z-50 h-16 ${
           scrolled
             ? "bg-black/90 shadow-lg shadow-purple-500/20"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-  <div className="flex items-center gap-3">
-    <div className="hidden md:block">
-      <div className="font-bold text-lg text-white">
-        VICTOR BERLINCK
-      </div>
-      <div className="text-xs text-purple-400">DEVELOPER</div>
-    </div>
-  </div>
+          <div className="flex items-center gap-3">
+            <div className="hidden md:block">
+              <div className="font-bold text-lg text-white">
+                VICTOR BERLINCK
+              </div>
+              <div className="text-xs text-purple-400">DEVELOPER</div>
+            </div>
+          </div>
 
-  {/* BOTÃO MOBILE */}
-  <button
-    className="md:hidden text-white text-2xl"
-    onClick={() => setMenuOpen((prev) => !prev)}
-  >
-    ☰
-  </button>
+          {/* BOTÃO MOBILE */}
+          <button
+            className="md:hidden text-white text-2xl relative z-[1000]"
+            onClick={() => setMenuOpen((prev) => !prev)}
+          >
+            ☰
+          </button>
 
-  {/* MENU DESKTOP */}
-  <div className="hidden md:flex gap-8">
-    {[
-      { id: "inicio", label: "INÍCIO" },
-      { id: "sobre", label: "SOBRE" },
-      { id: "tecnologias", label: "TECNOLOGIAS" },
-      { id: "experiencias", label: "EXPERIÊNCIA" },
-      { id: "projetos", label: "PROJETOS" },
-      { id: "contato", label: "CONTATO" },
-    ].map((item) => (
-      <motion.button
-        key={item.id}
-        onClick={() => scrollToSection(item.id)}
-        className="text-sm font-medium tracking-wider relative"
-        initial="rest"
-        animate={activeSection === item.id ? "active" : "rest"}
-        whileHover="hover"
-      >
-        <span
-          className={`transition-colors ${
-            activeSection === item.id
-              ? "text-purple-400"
-              : "text-white/80 hover:text-purple-400"
-          }`}
-        >
-          {item.label}
-        </span>
+          {/* MENU DESKTOP */}
+          <div className="hidden md:flex gap-8">
+            {[
+              { id: "inicio", label: "INÍCIO" },
+              { id: "sobre", label: "SOBRE" },
+              { id: "tecnologias", label: "TECNOLOGIAS" },
+              { id: "experiencias", label: "EXPERIÊNCIA" },
+              { id: "projetos", label: "PROJETOS" },
+              { id: "contato", label: "CONTATO" },
+            ].map((item) => (
+              <motion.button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-sm font-medium tracking-wider relative"
+                initial="rest"
+                animate={activeSection === item.id ? "active" : "rest"}
+                whileHover="hover"
+              >
+                <span
+                  className={`transition-colors ${
+                    activeSection === item.id
+                      ? "text-purple-400"
+                      : "text-white/80 hover:text-purple-400"
+                  }`}
+                >
+                  {item.label}
+                </span>
 
-        <motion.span
-          variants={{
-            rest: { width: 0 },
-            hover: { width: "100%" },
-            active: { width: "100%" },
-          }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="absolute -bottom-1 left-0 h-0.5 bg-purple-500"
-        />
-      </motion.button>
-    ))}
-  </div>
-</div>
-
+                <motion.span
+                  variants={{
+                    rest: { width: 0 },
+                    hover: { width: "100%" },
+                    active: { width: "100%" },
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="absolute -bottom-1 left-0 h-0.5 bg-purple-500"
+                />
+              </motion.button>
+            ))}
+          </div>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="md:hidden fixed top-16 left-0 w-full bg-black/95 backdrop-blur z-[999]"
+            >
+              {[
+                { id: "inicio", label: "INÍCIO" },
+                { id: "sobre", label: "SOBRE" },
+                { id: "tecnologias", label: "TECNOLOGIAS" },
+                { id: "experiencias", label: "EXPERIÊNCIA" },
+                { id: "projetos", label: "PROJETOS" },
+                { id: "contato", label: "CONTATO" },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    setMenuOpen(false);
+                  }}
+                  className={`block w-full px-6 py-4 text-left text-sm tracking-wider transition-colors ${
+                    activeSection === item.id
+                      ? "text-purple-400"
+                      : "text-white/80 hover:text-purple-400"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </div>
       </motion.nav>
 
       {/* Hero Section */}
