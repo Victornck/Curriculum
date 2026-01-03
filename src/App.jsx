@@ -14,6 +14,7 @@ import {
   Palette,
 } from "lucide-react";
 import FotoPerfil from "./assets/foto-perfil.jpg";
+import { motion } from "framer-motion";
 
 const App = () => {
   const [typedText, setTypedText] = useState("");
@@ -67,10 +68,17 @@ const App = () => {
   return (
     <div className="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen">
       {/* Navigation */}
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{
+          y: 0,
+          opacity: 1,
+          backdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
+        }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`fixed top-0 w-full z-50 ${
           scrolled
-            ? "bg-black/95 backdrop-blur-md shadow-lg shadow-purple-500/20"
+            ? "bg-black/90 shadow-lg shadow-purple-500/20"
             : "bg-transparent"
         }`}
       >
@@ -92,18 +100,31 @@ const App = () => {
               { id: "projetos", label: "PROJETOS" },
               { id: "contato", label: "CONTATO" },
             ].map((item) => (
-              <button
+              <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="hidden md:block hover:text-purple-400 transition-colors text-sm font-medium tracking-wider relative group"
+                className="hidden md:block text-sm font-medium tracking-wider relative"
+                whileHover="hover"
+                initial="rest"
+                animate="rest"
               >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 group-hover:w-full transition-all duration-300"></span>
-              </button>
+                <span className="text-white/80 hover:text-purple-400 transition-colors">
+                  {item.label}
+                </span>
+
+                <motion.span
+                  variants={{
+                    rest: { width: 0 },
+                    hover: { width: "100%" },
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="absolute -bottom-1 left-0 h-0.5 bg-purple-500"
+                />
+              </motion.button>
             ))}
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Hero Section */}
       <section
