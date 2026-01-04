@@ -333,10 +333,7 @@ const App = () => {
               </div>
               {/* Floating elements */}
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/50 animate-bounce">
-                <Zap className="w-10 h-10" />
-              </div>
-              <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-800 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/50 animate-bounce delay-300">
-                <Rocket className="w-10 h-10" />
+                <Code className="w-10 h-10" />
               </div>
             </div>
           </div>
