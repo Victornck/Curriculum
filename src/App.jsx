@@ -12,7 +12,19 @@ import {
   Zap,
   Target,
   Palette,
+  MessageCircle,
+  Users,
+  Search,
+  Shuffle,
+  Shield,
+  GraduationCap,
+  Calendar,
+  Code2,
+  FileDown,
+  Award,
+  X,
 } from "lucide-react";
+
 import FotoPerfil from "./assets/foto-perfil.jpg";
 import { motion } from "framer-motion";
 
@@ -22,6 +34,7 @@ const App = () => {
   const [scrolled, setScrolled] = useState(false);
   const fullName = "Victor Berlinck";
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showCertificados, setShowCertificados] = useState(false);
 
   useEffect(() => {
     let index = 0;
@@ -50,17 +63,6 @@ const App = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const technologies = [
-    { name: "Java", icon: Code },
-    { name: "Spring Boot", icon: Laptop },
-    { name: "JavaScript", icon: Code },
-    { name: "Node.js", icon: Laptop },
-    { name: "React", icon: Code },
-    { name: "HTML5", icon: Code },
-    { name: "CSS3", icon: Palette },
-    { name: "VS Code", icon: Code },
-  ];
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -309,8 +311,8 @@ const App = () => {
 
             {/* CTA Button */}
             <button className="mt-8 px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-800 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-purple-500/50 transition-all hover:scale-105 flex items-center gap-2">
+              <FileDown className="w-5 h-5" />
               Baixar Currículo
-              <Mail className="w-5 h-5" />
             </button>
           </div>
 
@@ -341,49 +343,164 @@ const App = () => {
       {/* About Section */}
       <motion.section
         id="sobre"
-        className="py-24"
+        className="py-32 mt-20"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        <div className="max-w-5xl">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* TÍTULO */}
           <h2 className="text-5xl font-bold mb-4 text-center">
             <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
               Sobre Mim
             </span>
           </h2>
-          <div className="h-1 w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-12 rounded-full"></div>
+          <div className="h-1 w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-20 rounded-full"></div>
 
-          <div className="bg-black/60 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-10 shadow-xl hover:shadow-purple-500/30 transition-all hover:border-purple-500/50">
-            <p className="text-gray-200 leading-relaxed text-lg mb-6">
-              Tenho 20 anos e atualmente curso o 7º semestre de{" "}
-              <span className="text-purple-400 font-semibold">
-                Sistemas de Informação
-              </span>{" "}
-              no Centro Universitário Inta - UNINTA.
-            </p>
-            <p className="text-gray-200 leading-relaxed text-lg mb-6">
-              Gosto de explorar novas tecnologias e criar soluções práticas,
-              eficientes e bem estruturadas que realmente ajudam pessoas e
-              empresas no dia a dia. Atuo no desenvolvimento web com{" "}
-              <span className="text-purple-400 font-semibold">
-                HTML, CSS e JavaScript
-              </span>
-              , e também construo soluções robustas em{" "}
-              <span className="text-purple-400 font-semibold">
-                Java/Spring Boot
-              </span>
-              , com foco em me consolidar como full-stack.
-            </p>
-            <p className="text-gray-200 leading-relaxed text-lg">
-              Gosto de trabalhar em projetos que priorizam a boa experiência do
-              usuário, eficiência e código bem estruturado. Tenho facilidade em
-              me comunicar, sou proativo e gosto de colaborar com outras
-              pessoas.
-            </p>
+          {/* GRID 40% / 60% */}
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16">
+            {/* ESQUERDA — BADGES + BOTÕES */}
+            <div className="flex flex-col gap-12">
+              
+              {/* BOTÕES */}
+              <div className="flex flex-col gap-4">
+                <a
+                  href="/curriculo.pdf"
+                  download
+                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-purple-700 text-white py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all"
+                >
+                  <FileDown className="w-5 h-5" />
+                  Baixar Currículo
+                </a>
+
+                <button
+                  onClick={() => setShowCertificados(true)}
+                  className="flex items-center justify-center gap-2 border border-purple-500/40 text-purple-400 py-4 rounded-xl font-semibold hover:bg-purple-500/10 transition-all"
+                >
+                  <Award className="w-5 h-5" />
+                  Ver Certificados
+                </button>
+              </div>
+            </div>
+
+            {/* DIREITA — SOBRE MIM + SOFT SKILLS */}
+            <div className="flex flex-col gap-16">
+              {/* CARD SOBRE MIM */}
+              <div className="bg-black/60 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-10 shadow-xl hover:shadow-purple-500/30 transition-all hover:border-purple-500/50">
+                <p className="text-gray-200 leading-relaxed text-lg mb-6">
+                  Tenho 20 anos e atualmente curso o 7º semestre de{" "}
+                  <span className="text-purple-400 font-semibold">
+                    Sistemas de Informação
+                  </span>{" "}
+                  no Centro Universitário Inta - UNINTA.
+                </p>
+
+                <p className="text-gray-200 leading-relaxed text-lg mb-6">
+                  Gosto de explorar novas tecnologias e criar soluções práticas,
+                  eficientes e bem estruturadas. Atuo no desenvolvimento web com{" "}
+                  <span className="text-purple-400 font-semibold">
+                    HTML, CSS e JavaScript
+                  </span>{" "}
+                  e também construo soluções robustas em{" "}
+                  <span className="text-purple-400 font-semibold">
+                    Java/Spring Boot
+                  </span>
+                  , com foco em me consolidar como full-stack.
+                </p>
+
+                <p className="text-gray-200 leading-relaxed text-lg">
+                  Gosto de trabalhar em projetos que priorizam a boa experiência
+                  do usuário, eficiência e código bem estruturado. Sou
+                  comunicativo, proativo e colaborativo.
+                </p>
+              </div>
+
+              {/* CARD SOFT SKILLS */}
+              <div className="bg-black/60 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-10 shadow-xl hover:shadow-purple-500/30 transition-all hover:border-purple-500/50">
+                <h3 className="text-3xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                    Soft Skills
+                  </span>
+                </h3>
+                <p className="text-gray-400 mb-8">Habilidades interpessoais</p>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      name: "Comunicativo",
+                      icon: MessageCircle,
+                      color: "text-blue-400",
+                    },
+                    {
+                      name: "Colaborativo",
+                      icon: Users,
+                      color: "text-cyan-400",
+                    },
+                    {
+                      name: "Proativo",
+                      icon: Rocket,
+                      color: "text-orange-400",
+                    },
+                    { name: "Curioso", icon: Search, color: "text-green-400" },
+                    {
+                      name: "Adaptável",
+                      icon: Shuffle,
+                      color: "text-purple-400",
+                    },
+                    { name: "Resiliente", icon: Shield, color: "text-red-400" },
+                  ].map((skill, index) => {
+                    const IconComponent = skill.icon;
+                    return (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        whileHover={{ scale: 1.05, y: -5 }}
+                        className="bg-white/5 border border-white/10 rounded-xl p-5 text-center hover:border-purple-500/50 transition-all hover:shadow-lg hover:shadow-purple-500/20 cursor-pointer group"
+                      >
+                        <div className="mb-3 flex justify-center">
+                          <IconComponent
+                            className={`w-9 h-9 ${skill.color} transform group-hover:scale-110 transition-transform`}
+                          />
+                        </div>
+                        <h4 className="font-semibold text-white">
+                          {skill.name}
+                        </h4>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* MODAL CERTIFICADOS */}
+        {showCertificados && (
+          <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
+            <div className="relative max-w-6xl w-full max-h-[90vh] bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl overflow-hidden shadow-2xl">
+              <div className="flex items-center justify-between px-8 py-6 border-b">
+                <h3 className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+                  <Award className="w-6 h-6" />
+                  Meus Certificados
+                </h3>
+
+                <button
+                  onClick={() => setShowCertificados(false)}
+                  className="p-2 rounded-full hover:bg-black/10 transition"
+                >
+                  <X className="w-6 h-6 text-blue-600" />
+                </button>
+              </div>
+
+              <div className="p-8 overflow-y-auto max-h-[75vh]">
+                {/* AQUI você coloca seus cards de certificados */}
+              </div>
+            </div>
+          </div>
+        )}
       </motion.section>
 
       {/* Technologies Section */}
