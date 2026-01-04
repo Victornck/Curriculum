@@ -224,7 +224,18 @@ const App = () => {
       {/* Hero Section */}
       <section
         id="inicio"
-        className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden"
+        className="
+          min-h-screen
+          sm:min-h-[90vh]
+          flex
+          items-center
+          justify-center
+          px-6
+          pt-24
+          md:pt-20
+          relative
+          overflow-hidden
+        "
       >
         {/* Animated background circles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -306,12 +317,6 @@ const App = () => {
                 </svg>
               </a>
             </div>
-
-            {/* CTA Button */}
-            <button className="mt-8 px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-800 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-purple-500/50 transition-all hover:scale-105 flex items-center gap-2">
-              <FileDown className="w-5 h-5" />
-              Baixar Currículo
-            </button>
           </div>
 
           {/* Profile Image */}
@@ -341,7 +346,12 @@ const App = () => {
       {/* About Section */}
       <motion.section
         id="sobre"
-        className="py-32 mt-20"
+        className="
+    py-20
+    mt-8
+    md:py-32
+    md:mt-20
+  "
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -364,7 +374,7 @@ const App = () => {
               tecnologia.
             </p>
           </div>
-          <div className="h-1 w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-20 rounded-full"></div>
+          <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-10 md:mb-20 rounded-full"></div>
 
           {/* GRID 40% / 60% */}
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16">
@@ -531,7 +541,7 @@ const App = () => {
               inovadoras.
             </p>
           </div>
-          <div className="h-1 w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-12 rounded-full"></div>
+          <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-10 md:mb-20 rounded-full"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Frontend */}
@@ -719,7 +729,7 @@ const App = () => {
               desafios reais.
             </p>
           </div>
-          <div className="h-1 w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-12 rounded-full"></div>
+          <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-10 md:mb-20 rounded-full"></div>
 
           <div className="space-y-6">
             <div className="bg-black/60 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-10 hover:border-purple-500 hover:shadow-xl hover:shadow-purple-500/30 transition-all">
@@ -760,7 +770,7 @@ const App = () => {
               Principais projetos que desenvolvi aplicando tecnologias modernas.
             </p>
           </div>
-          <div className="h-1 w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-12 rounded-full"></div>
+          <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-10 md:mb-20 rounded-full"></div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {[
@@ -812,7 +822,7 @@ const App = () => {
               Grandes projetos começam com uma conversa. Vamos começar a nossa?
             </p>
           </div>
-          <div className="h-1 w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-12 rounded-full"></div>
+          <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto mb-10 md:mb-20 rounded-full"></div>
 
           <div className="grid md:grid-cols-3 gap-6">
             <a
