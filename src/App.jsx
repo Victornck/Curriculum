@@ -380,7 +380,7 @@ const App = () => {
               {/* BOTÕES */}
               <div className="flex flex-col gap-4">
                 <a
-                  href="/curriculo.pdf"
+                  href="./assets/curriculo-victor-berlinck.pdf"
                   download
                   className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-purple-700 text-white py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all"
                 >
