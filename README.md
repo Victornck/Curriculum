@@ -1,16 +1,17 @@
 # Portfólio / Currículo Online
 
-Este repositório contém o código-fonte do meu **currículo e portfólio online**, desenvolvido com foco em performance, responsividade e apresentação profissional.
+Este repositório contém o código-fonte do meu **currículo e portfólio online**, criado com foco em performance, responsividade e apresentação profissional.
 
-O projeto foi criado para servir como uma vitrine das minhas habilidades técnicas, experiências e projetos, além de facilitar o acesso ao meu currículo de forma moderna e acessível.
+O projeto foi desenvolvido para servir como uma vitrine das minhas habilidades técnicas, experiências e projetos, além de facilitar o acesso ao meu currículo de forma moderna e acessível.
 
 ---
 
 ## 🔗 Acesso ao Projeto
 
 - **Aplicação online (Vercel):**  
-  https://vercel.com/victor-berlincks-projects?repo=https://github.com/Victornck/Curriculum
+  https://victorberlinck.vercel.app
 
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
