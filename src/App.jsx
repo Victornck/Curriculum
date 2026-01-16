@@ -381,7 +381,7 @@ const App = () => {
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-4">
                   <a
-                    href="/curriculo.pdf"
+                    href="/CURRÍCULO VICTOR GABRIEL BERLINCK.docx.pdf"
                     download
                     className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-purple-700 text-white py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all"
                   >
@@ -390,13 +390,13 @@ const App = () => {
                   </a>
                 </div>
 
-                <button
+                {/* <button
                   onClick={() => setShowCertificados(true)}
                   className="flex items-center justify-center gap-2 border border-purple-500/40 text-purple-400 py-4 rounded-xl font-semibold hover:bg-purple-500/10 transition-all"
                 >
                   <Award className="w-5 h-5" />
                   Ver Certificados
-                </button>
+                </button> */}
               </div>
             </div>
 
