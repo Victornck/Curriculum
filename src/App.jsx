@@ -389,14 +389,6 @@ const App = () => {
                     Baixar Currículo
                   </a>
                 </div>
-
-                {/* <button
-                  onClick={() => setShowCertificados(true)}
-                  className="flex items-center justify-center gap-2 border border-purple-500/40 text-purple-400 py-4 rounded-xl font-semibold hover:bg-purple-500/10 transition-all"
-                >
-                  <Award className="w-5 h-5" />
-                  Ver Certificados
-                </button> */}
               </div>
             </div>
 
