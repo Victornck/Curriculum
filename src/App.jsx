@@ -381,7 +381,7 @@ const App = () => {
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-4">
                   <a
-                    href="/curriculo-victor-berlinck"
+                    href="/curriculo-victor-berlinck.pdf"
                     download="Victor_Gabriel_Berlinck_Curriculo.pdf"
                     className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-purple-700 text-white py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all"
                   >
